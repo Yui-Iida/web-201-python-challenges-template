@@ -6,8 +6,20 @@
 # if total is greater than 70 Euros 7% discount and so on.
 
 def calculate_bill(shopping_list):
-    pass
+    total = 0
+    for cost in shopping_list.values():
+        total = total + cost
+        if(total >= 50):
+            total = total * 0.95
+    return total
+        
 
 def test_challenge_07_happy_case(): 
-    shopping_list = {'apples':11.20, 'bananas':2.2, 'eggs':30.00}
-    assert calculate_bill(shopping_list) == 43.4
+    shopping_list1 = {'apples':11.20, 'bananas':2.2, 'eggs':30.00}
+    assert calculate_bill(shopping_list1) == 43.4
+
+
+def test_challenge_07_happy_case2(): 
+    shopping_list2 = {'apples':50, 'bananas':60, 'eggs':50}
+    # (50 + 60 + 50) * 0.95 = 152
+    assert calculate_bill(shopping_list2) == 152

@@ -14,8 +14,17 @@
 # 
 # Notes: Consider a month has 30 days.
 
+from struct import calcsize
+
+
 def wash_hands(n, m):
-    pass
+    total = n * 21 * 30 * m 
+    min = round(total / 60)
+    sec = total - min * 60
+    return str(min) + " minutes and " + str(sec) + " seconds"
 
 def test_challenge_03_case_1(): 
     assert wash_hands(8, 7) == '588 minutes and 0 seconds'
+    
+def test_challenge_03_case_2(): 
+    assert wash_hands(10, 2) == '210 minutes and 0 seconds'
